@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menú del Local</title>
+  <style>
+    :root {
+      --primary-color: #ff5722;
+      --bg-color: #fff8f4;
+      --text-color: #333;
+      --card-bg: #ffffff;
+      --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding: 1rem;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+    }
+
+    .menu-section {
+      max-width: 900px;
+      margin: 2rem auto;
+    }
+
+    .category {
+      margin-bottom: 2rem;
+    }
+
+    .category h2 {
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      cursor: pointer;
+    }
+
+    .sub-category {
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+
+    .sub-category h3 {
+      font-size: 1.3rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+    }
+
+    .item-list {
+      display: none;
+    }
+
+    .item {
+      padding: 0.6rem 1rem;
+      background-color: var(--card-bg);
+      box-shadow: var(--shadow);
+      border-radius: 12px;
+      margin-bottom: 0.8rem;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .item:hover {
+      transform: scale(1.02);
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .item-name {
+      font-weight: 500;
+    }
+
+    .item-price {
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    .ingredients {
+      display: none;
+      font-size: 0.9rem;
+      color: #555;
+      background-color: #fdf5f0;
+      padding: 0.5rem 0.5rem 0.5rem 1rem;
+      border-left: 3px solid var(--primary-color);
+      margin-top: 0.4rem;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Menú del Local</h1>
+    <p>¡Disfrutá nuestra variedad de comidas y bebidas!</p>
+  </header>
+
+  <div class="menu-section">
+    
+    <div class="category">
+      <h2 onclick="toggleNext(this)">Promos</h2>
+      <div class="item-list">
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">2 lomos completos + fritas</span>
+            <span class="item-price">$30.000</span>
+          </div>
+          <div class="ingredients">2 lomos completos con papas fritas.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">2 hamburguesas completas + fritas</span>
+            <span class="item-price">$23.000</span>
+          </div>
+          <div class="ingredients">2 hamburguesas completas con papas fritas.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Lomo pizza (8 porciones) + fritas</span>
+            <span class="item-price">$40.000</span>
+          </div>
+          <div class="ingredients">Lomo pizza con 8 porciones y papas fritas.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Lomo pizza (8 porciones)</span>
+            <span class="item-price">$38.000</span>
+          </div>
+          <div class="ingredients">Lomo pizza con 8 porciones.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Muza a la piedra</span>
+            <span class="item-price">$11.000</span>
+          </div>
+          <div class="ingredients">Pizza muzzarella a la piedra.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Papas grandes con cheddar</span>
+            <span class="item-price">$8.000</span>
+          </div>
+          <div class="ingredients">Papas fritas grandes con salsa cheddar.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Pizza especial + muza</span>
+            <span class="item-price">$14.500</span>
+          </div>
+          <div class="ingredients">Pizza especial con una muzza.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Docena de empanadas</span>
+            <span class="item-price">$7.000</span>
+          </div>
+          <div class="ingredients">12 empanadas de carne o jamón y queso.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <h2 onclick="toggleNext(this)">Al Plato</h2>
+      <div class="item-list">
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Milanesa simple + fritas</span>
+            <span class="item-price">$11.000</span>
+          </div>
+          <div class="ingredients">Carne de res empanada, papas fritas.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Milanesa napolitana + fritas</span>
+            <span class="item-price">$12.500</span>
+          </div>
+          <div class="ingredients">Milanesa con jamón, queso y salsa de tomate, papas fritas.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Milanesa a caballo + fritas</span>
+            <span class="item-price">$12.500</span>
+          </div>
+          <div class="ingredients">Milanesa con un huevo frito encima, papas fritas.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Hamburguesa al plato + fritas</span>
+            <span class="item-price">$10.500</span>
+          </div>
+          <div class="ingredients">Hamburguesa de carne, papas fritas.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Lomo al plato + guarnición</span>
+            <span class="item-price">$15.000</span>
+          </div>
+          <div class="ingredients">Lomo a la parrilla, acompañado con guarnición a elección.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Fideos estilo oriental</span>
+            <span class="item-price">$9.500</span>
+          </div>
+          <div class="ingredients">Fideos salteados con verduras y salsa oriental.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Salteado de pollo</span>
+            <span class="item-price">$10.000</span>
+          </div>
+          <div class="ingredients">Pollo salteado con verduras frescas.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">¼ Pollo + guarnición</span>
+            <span class="item-price">$7.500</span>
+          </div>
+          <div class="ingredients">¼ Pollo a la parrilla, guarnición a elección.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Tortilla de papas con ensalada</span>
+            <span class="item-price">$6.500</span>
+          </div>
+          <div class="ingredients">Tortilla de papas acompañada de ensalada fresca.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <h2 onclick="toggleNext(this)">Pasta</h2>
+      <div class="item-list">
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Sorrentinos caseros</span>
+            <span class="item-price">$7.500</span>
+          </div>
+          <div class="ingredients">Masa casera rellena con jamón y queso, salsa a elección.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Ravioles</span>
+            <span class="item-price">$6.500</span>
+          </div>
+          <div class="ingredients">Relleno de carne, salsa a elección.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Lasaña de verduras y queso</span>
+            <span class="item-price">$7.500</span>
+          </div>
+          <div class="ingredients">Verduras salteadas, capas de pasta, salsa blanca, queso.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">       
+            <span class="item-name">Ñoquis de papa</span>
+            <span class="item-price">$6.500</span>
+          </div>
+          <div class="ingredients">Ñoquis de papa con salsa de tomate o crema.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Canelones de verdura</span>
+            <span class="item-price">$7.500</span>
+          </div>
+          <div class="ingredients">Canelones rellenos de espinaca y ricota, salsa a elección.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Fideos caseros al huevo</span>
+            <span class="item-price">$6.500</span>
+          </div>
+          <div class="ingredients">Fideos caseros al huevo con salsa de tomate o bolognesa.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <h2 onclick="toggleNext(this)">Ensaladas</h2>
+      <div class="item-list">
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Pollo (Grande)</span>
+            <span class="item-price">$7.000</span>
+          </div>
+          <div class="ingredients">Pollo a la parrilla, lechuga, tomate, cebolla, aderezo a elección.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Pollo (Chica)</span>
+            <span class="item-price">$4.000</span>
+          </div>
+          <div class="ingredients">Pollo a la parrilla, lechuga, tomate, cebolla, aderezo a elección.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">César (Grande)</span>
+            <span class="item-price">$7.000</span>
+          </div>
+          <div class="ingredients">Lechuga romana, pollo a la parrilla, croutons, aderezo César.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">César (Chica)</span>
+            <span class="item-price">$4.000</span>
+          </div>
+          <div class="ingredients">Lechuga romana, pollo a la parrilla, croutons, aderezo César.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Atún</span>
+            <span class="item-price">$7.000</span>
+          </div>
+          <div class="ingredients">Atún en conserva, lechuga, tomate, cebolla, huevo duro.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <h2 onclick="toggleNext(this)">Sándwiches</h2>
+      <div class="item-list">
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Hamburguesa completa</span>
+            <span class="item-price">$10.000</span>
+          </div>
+          <div class="ingredients">Carne de res, queso, lechuga, tomate, cebolla, mayonesa.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Lomo completo</span>
+            <span class="item-price">$14.000</span>
+          </div>
+          <div class="ingredients">Lomo de res, queso, lechuga, tomate, mayonesa.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Lomo especial</span>
+            <span class="item-price">$15.500</span>
+          </div>
+          <div class="ingredients">Lomo de res, queso, cebolla caramelizada, mayonesa.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Barroluco</span>
+            <span class="item-price">$14.000</span>
+          </div>
+          <div class="ingredients">Lomo, jamón, queso, huevo, lechuga, tomate.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Hamburguesa individual</span>
+            <span class="item-price">$8.500</span>
+          </div>
+          <div class="ingredients">Carne de res, lechuga, tomate, mayonesa.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Lomo individual</span>
+            <span class="item-price">$11.000</span>
+          </div>
+          <div class="ingredients">Lomo de res, lechuga, tomate, mayonesa.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Hamburguesa individual (bañada en cheddar)</span>
+            <span class="item-price">$10.000</span>
+          </div>
+          <div class="ingredients">Carne de res, queso cheddar, lechuga, tomate, mayonesa.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Sándwich vegetariano</span>
+            <span class="item-price">$9.500</span>
+          </div>
+          <div class="ingredients">Pan integral, vegetales frescos, hummus.</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    <div class="category">
+      <h2 onclick="toggleNext(this)">Pizzas</h2>
+      <div class="item-list">
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Muzarella</span>
+            <span class="item-price">$6.500</span>
+          </div>
+          <div class="ingredients">Pizza muzzarella clásica.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">A la piedra</span>
+            <span class="item-price">$6.000</span>
+          </div>
+          <div class="ingredients">Pizza a la piedra con salsa de tomate y queso.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Especial</span>
+            <span class="item-price">$9.000</span>
+          </div>
+          <div class="ingredients">Pizza con ingredientes variados.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Tropical</span>
+            <span class="item-price">$12.000</span>
+          </div>
+          <div class="ingredients">Pizza con jamón, piña y salsa.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Palmitos</span>
+            <span class="item-price">$13.000</span>
+          </div>
+          <div class="ingredients">Pizza con palmitos y queso.</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="category">
+      <h2 onclick="toggleNext(this)">Panchos</h2>
+      <div class="item-list">
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Completo</span>
+            <span class="item-price">$1.800</span>
+          </div>
+          <div class="ingredients">Pan, salchicha, condimentos.</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="category">
+      <h2 onclick="toggleNext(this)">Papas Fritas</h2>
+      <div class="item-list">
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Simples Grandes</span>
+            <span class="item-price">$6.000</span>
+          </div>
+          <div class="ingredients">Papas fritas grandes.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Simples Chicas</span>
+            <span class="item-price">$4.000</span>
+          </div>
+          <div class="ingredients">Papas fritas chicas.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Cheddar Grandes</span>
+            <span class="item-price">$7.500</span>
+          </div>
+          <div class="ingredients">Papas fritas grandes con cheddar.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Cheddar Chicas</span>
+            <span class="item-price">$5.500</span>
+          </div>
+          <div class="ingredients">Papas fritas chicas con cheddar.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <h2 onclick="toggleNext(this)">Empanadas</h2>
+      <div class="item-list">
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Carne (1 Docena)</span>
+            <span class="item-price">$6.800</span>
+          </div>
+          <div class="ingredients">Empanadas de carne.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <h2 onclick="toggleNext(this)">Bebidas</h2>
+      <div class="item-list">
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Pepsi / Coca-Cola 500cc</span>
+            <span class="item-price">$2.500</span>
+          </div>
+          <div class="ingredients">Agua carbonatada, azúcar, colorante caramelo, ácido fosfórico, cafeína.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Pepsi / Coca-Cola 1,5L</span>
+            <span class="item-price">$4.500</span>
+          </div>
+          <div class="ingredients">Versión familiar ideal para compartir.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Quilmes 1 litro</span>
+            <span class="item-price">$4.500</span>
+          </div>
+          <div class="ingredients">Cerveza rubia, cebada malteada, lúpulo, agua.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Quilmes IPA 1 litro</span>
+            <span class="item-price">$5.000</span>
+          </div>
+          <div class="ingredients">Estilo IPA con lúpulo extra y notas cítricas.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Andes 1 litro</span>
+            <span class="item-price">$4.200</span>
+          </div>
+          <div class="ingredients">Cerveza tipo lager, suave y refrescante.</div>
+        </div>
+        <div class="item">
+          <div class="item-header" onclick="toggleIngredients(this)">
+            <span class="item-name">Stella Artois litro</span>
+            <span class="item-price">$6.000</span>
+          </div>
+          <div class="ingredients">Cerveza premium de sabor distintivo y cuerpo suave.</div>
+        </div>
+      </div>
+    </div>
+  
+
+  <script>
+    function toggleNext(element) {
+      const next = element.nextElementSibling;
+      if (next) {
+        next.style.display = next.style.display === 'block' ? 'none' : 'block';
+      }
+    }
+
+    function toggleIngredients(header) {
+      const ingredients = header.parentElement.querySelector('.ingredients');
+      if (ingredients) {
+        ingredients.style.display = ingredients.style.display === 'block' ? 'none' : 'block';
+      }
+    }
+  </script>
+</body>
+</html>
